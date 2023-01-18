@@ -8,6 +8,7 @@ import { CartasComponent } from './pages/cartas/cartas.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
+  { path: 'cartas', component: CartasComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
 ];
