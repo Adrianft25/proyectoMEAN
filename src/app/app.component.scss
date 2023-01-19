@@ -1,0 +1,44 @@
+:host {
+  $main-pading-inline: 2rem;
+  $main-color-text: #2a2a2a;
+  $main-transition: 0.3s ease-in-out all;
+  $header-font-size: 1.5rem;
+
+  & > header {
+    padding-inline: $main-pading-inline;
+    margin-bottom: 1rem;
+    color: $main-color-text;
+    font-size: $header-font-size;
+
+    & > #main-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      & > .nav-link {
+        color: $main-color-text;
+        text-decoration: none;
+        padding: 0.5rem;
+        margin-inline: 0.25rem;
+        transition: $main-transition;
+
+        &::after {
+          content: "";
+          width: 0px;
+          height: 1px;
+          display: block;
+          background: $main-color-text;
+          transition: 300ms;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+      }
+    }
+  }
+  & > main {
+    padding-inline: $main-pading-inline;
+    color: $main-color-text;
+  }
+}

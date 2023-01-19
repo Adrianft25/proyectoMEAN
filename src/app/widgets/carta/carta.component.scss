@@ -1,19 +1,23 @@
-.cartas-container {
-    display: grid;
-  background-color: #2196F3;
-  padding: 5px;
-}
+:host {
+  & .cartas-container {
+    height: 100%;
+    box-sizing: border-box;
+    // display: grid;
+    background-color: #2196f3;
+    padding: 5px;
 
-.area-carta {
-    display: grid;
-    background-color: #03e09e;
-    padding: 10px;
-}
+    & > .area-carta {
+      height: 100%;
+      box-sizing: border-box;
+      // display: grid;
+      background-color: #03e09e;
+      padding: 10px;
 
-.imagen-carta {
-   
-}
+      & > .imagen-carta {
+      }
 
-.textos-carta {
-    
+      & > .textos-carta {
+      }
+    }
+  }
 }
