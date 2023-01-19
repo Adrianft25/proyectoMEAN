@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { CartasComponent } from './pages/cartas/cartas.component';
 import { HttpClientModule } from '@angular/common/http';
+import { CartaComponent } from './widgets/carta/carta.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -18,7 +19,8 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     HomeComponent,
-    CartasComponent
+    CartasComponent,
+    CartaComponent
   ],
   imports: [
     BrowserModule,
