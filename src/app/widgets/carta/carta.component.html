@@ -1,13 +1,9 @@
-<div class="cartas-container">
-    <div class="area-carta">
-        <div class="imagen-carta">
-            <p>asdf</p>
-        </div>
-        <div class="textos-carta">
-            <h1>{{ card?.name }} </h1>
-            <p>{{ card?.atk }}</p>
-            <p>{{ card?.def }}</p>
-            <p>{{ card?.type }}</p>
-        </div>
+<div class="area-carta">
+    <div class="imagen-carta">
+        <img [src]="url_image">
+    </div>
+    <div class="textos-carta">
+        <h1>{{ card?.name }} </h1>
+        <span>{{ precio }} €</span>
     </div>
 </div>

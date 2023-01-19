@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Card } from 'src/app/models/carta.model';
 
 @Component({
@@ -6,10 +6,17 @@ import { Card } from 'src/app/models/carta.model';
   templateUrl: './carta.component.html',
   styleUrls: ['./carta.component.scss']
 })
-export class CartaComponent {
+export class CartaComponent implements OnInit{
 
   @Input() card: Card | undefined;
+  url_image: string | undefined;
+  precio: string | undefined;
 
   constructor() { }
+
+  ngOnInit() {
+    this.url_image = this.card?.card_images[0]?.image_url_small;
+    this.precio = this.card?.card_prices[0]?.cardmarket_price;
+  }
 
 }

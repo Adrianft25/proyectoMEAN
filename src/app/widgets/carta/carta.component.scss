@@ -1,23 +1,22 @@
 :host {
-  & .cartas-container {
+
+  &>.area-carta {
     height: 100%;
+    border: 5px solid #181818;
+    border-radius: 12px;
+    height: 100%;
+    background-color: #888888;
+    padding: 1rem;
     box-sizing: border-box;
-    // display: grid;
-    background-color: #2196f3;
-    padding: 5px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 1rem;
 
-    & > .area-carta {
-      height: 100%;
-      box-sizing: border-box;
-      // display: grid;
-      background-color: #03e09e;
-      padding: 10px;
 
-      & > .imagen-carta {
-      }
+    &>.imagen-carta {}
 
-      & > .textos-carta {
-      }
+    &>.textos-carta p {
+
     }
   }
 }
