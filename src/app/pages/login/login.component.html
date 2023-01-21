@@ -1,16 +1,7 @@
-<div>
-    <form action="">
-        <div>
-            <input type="email" name="email" placeholder="Email">
-        </div>
+<ng-container *ngIf="showLogin">
+    <app-signin (onLogin)="login"></app-signin>
+</ng-container>
 
-        <div>
-            <input type="password" name="passwd" placeholder="Contraseña">
-        </div>
-
-        <div>
-            <button type="submit">Entrar</button>
-        </div>
-        
-    </form>
-</div>
+<ng-container *ngIf="showRegistro">
+    <app-signup></app-signup>
+</ng-container>

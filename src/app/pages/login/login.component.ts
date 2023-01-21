@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -8,17 +7,19 @@ import { NgForm } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+
+  showLogin = true;
+  showRegistro = false;
+
   constructor(){}
 
   ngOnInit(): void {
   }
 
-  //Recuperar los datos del formulario de Login
-
-  login(form:NgForm) {
-
-    const email = form.value.email;
-    const pass = form.value.passwd;
+  login(login:any) {
+    console.log(login);
+    this.showLogin = false;
+    this.showRegistro = true;
   }
 
 }
