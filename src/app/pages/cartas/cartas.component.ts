@@ -18,6 +18,7 @@ export class CartasComponent implements OnInit {
   ngOnInit(): void {
 
     this._cartasService.getJSON().subscribe((data: Card[]) => {
+      if (!data) return;
       this.cards = data;
     });
 

@@ -6,16 +6,17 @@ import { Card } from 'src/app/models/carta.model';
   templateUrl: './carta.component.html',
   styleUrls: ['./carta.component.scss']
 })
-export class CartaComponent implements OnInit{
+export class CartaComponent implements OnInit {
 
   @Input() card: Card | undefined;
-  url_image: string | undefined;
+  url_image: string = '';
   precio: string | undefined;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
-    this.url_image = this.card?.card_images[0]?.image_url_small;
+    this.url_image = this.card?.card_images[0]?.image_url_small ?? '';
     this.precio = this.card?.card_prices[0]?.cardmarket_price;
   }
 

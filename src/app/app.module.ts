@@ -11,6 +11,7 @@ import { CartaComponent } from './widgets/carta/carta.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/login/signup/signup.component';
 import { SigninComponent } from './pages/login/signin/signin.component';
+import { ImagenCartaComponent } from './widgets/carta/imagen-carta/imagen-carta.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -28,7 +29,8 @@ const routes: Routes = [
     CartaComponent,
     LoginComponent,
     SignupComponent,
-    SigninComponent
+    SigninComponent,
+    ImagenCartaComponent
   ],
   imports: [
     BrowserModule,

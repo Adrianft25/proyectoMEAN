@@ -1,9 +1,7 @@
 <div class="area-carta">
-    <div class="imagen-carta">
-        <img [src]="url_image">
-    </div>
-    <div class="textos-carta">
-        <h1>{{ card?.name }} </h1>
-        <span>{{ precio }} €</span>
-    </div>
+  <app-imagen-carta [imagen]="url_image" [efectoHover]="true"></app-imagen-carta>
+  <div class="textos-carta">
+    <h1>{{ card?.name }}</h1>
+    <span>{{ precio }} €</span>
+  </div>
 </div>
