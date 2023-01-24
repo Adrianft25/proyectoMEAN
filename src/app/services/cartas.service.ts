@@ -15,4 +15,9 @@ export class CartasService {
     const urlCartas = `${this.URL}/cartas`;
     return this.http.get<Card[]>(urlCartas);
   }
+
+  public getCarta(id: number | string): Observable<Card> {
+    const urlCartas = `${this.URL}/cartas/carta/${id}`;
+    return this.http.get<Card>(urlCartas);
+  }
 }
