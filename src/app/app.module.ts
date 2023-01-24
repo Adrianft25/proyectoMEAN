@@ -12,10 +12,12 @@ import { LoginComponent } from './pages/login/login.component';
 import { SignupComponent } from './pages/login/signup/signup.component';
 import { SigninComponent } from './pages/login/signin/signin.component';
 import { ImagenCartaComponent } from './widgets/carta/imagen-carta/imagen-carta.component';
+import { CartaPageComponent } from './pages/cartas/carta-page/carta-page.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cartas', component: CartasComponent },
+  { path: 'carta/:id', component: CartaPageComponent},
   { path: 'login', component: LoginComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
@@ -30,7 +32,8 @@ const routes: Routes = [
     LoginComponent,
     SignupComponent,
     SigninComponent,
-    ImagenCartaComponent
+    ImagenCartaComponent,
+    CartaPageComponent
   ],
   imports: [
     BrowserModule,

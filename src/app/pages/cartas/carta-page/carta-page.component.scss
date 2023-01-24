@@ -1,0 +1,19 @@
+:host {
+
+    &>.area-carta {
+      height: 100%;
+      border: 5px solid #181818;
+      border-radius: 12px;
+      height: 100%;
+      background-color: #888888;
+      padding: 1rem;
+      box-sizing: border-box;
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+  
+      &>.textos-carta p {
+  
+      }
+    }
+  }
