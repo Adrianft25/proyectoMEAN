@@ -1,25 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-
-
   showLogin = true;
   showRegistro = false;
 
-  constructor(){}
+  constructor(private _loginService: SesionService) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
-  login(login:any) {
+  async login(login: any) {
+    await this._loginService.login()
+      .then((res: boolean) => {
+        console.log(res);
+      });
     console.log(login);
-    this.showLogin = false;
-    this.showRegistro = true;
+    //this.showLogin = false;
+    //this.showRegistro = true;
   }
-
 }
