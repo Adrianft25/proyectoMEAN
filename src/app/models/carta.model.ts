@@ -9,6 +9,7 @@ export interface Card {
     level: number;
     race: string;
     attribute: string;
+    stock: number | undefined;
     card_sets: CardSet[];
     card_images: CardImage[];
     card_prices: CardPrice[];
