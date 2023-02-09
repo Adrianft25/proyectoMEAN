@@ -5,24 +5,19 @@ import { CartasService } from 'src/app/services/cartas.service';
 @Component({
   selector: 'app-cartas',
   templateUrl: './cartas.component.html',
-  styleUrls: ['./cartas.component.scss']
+  styleUrls: ['./cartas.component.scss'],
 })
 export class CartasComponent implements OnInit {
-
   cards: Card[] = [];
 
-  constructor(private _cartasService: CartasService) {
-
-  }
+  constructor(private _cartasService: CartasService) {}
 
   ngOnInit(): void {
-
     this._cartasService.getAllCartas().subscribe((data: Card[]) => {
       if (!data) return;
+      console.log(data);
       this.cards = data;
+      console.log(this.cards);
     });
-
   }
-
 }
-
