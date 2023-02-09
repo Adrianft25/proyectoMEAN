@@ -16,7 +16,10 @@ export class CartaPageComponent implements OnInit {
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
       const id = parseInt(params.get('id') ?? '');
-      this.cartasService.getCarta(id).subscribe((c: Card) => this.carta = c);
+      this.cartasService.getCarta(id).subscribe((c: Card) => {
+        this.carta = c;
+        console.log(c);
+      });
     });
   }
 }

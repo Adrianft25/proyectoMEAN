@@ -1,3 +1,28 @@
 <div class="container mx-auto">
-    {{carta | json}}
+    <div class="grid grid-cols-2" *ngIf="carta">
+      <app-imagen-carta class="flex justify-center" [imagen]="carta.card_images[0].image_url" [efectoHover]="false"></app-imagen-carta>
+      <div>
+        <h1>{{ carta.name }}</h1>
+        <div class="grid grid-cols-2">
+          <div>
+            <span>Tipo / Atributo</span>
+            <br>
+            <span>{{ carta.type + ' / ' + carta.attribute }}</span>
+            <hr>
+            <span>Descripción:</span>
+            <p>{{ carta.desc }}</p>
+            <hr>
+            <span>ATK / DEF</span>
+            <br>
+            <span>{{ carta.atk + ' / ' + carta.def}}</span>
+            <span></span>
+          </div>
+          <div>
+            <span>Precio</span>
+            <br>
+            <span>{{ carta.card_prices[0].tcgplayer_price }} $</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
