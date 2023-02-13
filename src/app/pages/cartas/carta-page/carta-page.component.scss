@@ -1,7 +1,26 @@
 @import 'global.scss';
 
-/*
+
 :host {
 
+  h1{
+    font-size: 2rem;
+    font-weight: bold;
   }
-*/
+
+  .propiedades{
+
+    padding-block: 0.5rem;
+    /*
+    &:not(:last-child){
+      border-bottom: 1px solid grey;
+    }*/
+  }
+  
+  h3 {
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-decoration: underline;
+  }
+
+}
