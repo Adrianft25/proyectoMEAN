@@ -21,7 +21,7 @@
 
         <div class="form-group">
             <label for="passwd2">Repite tu contraseña</label>
-            <input type="password" class="form-control" id="passwd2" required [(ngModel)]="registro.passwd" name="passwd2"
+            <input type="password" class="form-control" id="passwd2" required [(ngModel)]="registro.passwd2" name="passwd2"
                 #passwd2="ngModel">
             <div [hidden]="passwd2.valid || passwd2.pristine" class="alert alert-danger">
                 Campo requerido

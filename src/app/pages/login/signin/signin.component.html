@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" #loginForm="ngForm">
         <div class="form-group">
             <label for="email">Usuario</label>
-            <input type="email" class="form-control" id="email" required [(ngModel)]="login.usuario" name="email"
+            <input type="email" class="form-control" id="email" required [(ngModel)]="login.email" name="email"
                 #email="ngModel">
             <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                 Campo requerido

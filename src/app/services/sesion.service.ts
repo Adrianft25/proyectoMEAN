@@ -8,21 +8,39 @@ import { Observable } from 'rxjs';
 export class SesionService {
   URL: string = `http://localhost:3000`;
 
-  token: string | undefined = undefined;
+  usuario: any | undefined = undefined;
 
   constructor(private http: HttpClient) {}
 
-  public login(): Promise<boolean> {
+  public login(email: string, passwd: string): Promise<boolean> {
     const urlLogin = `${this.URL}/auth/login`;
     return new Promise((resolve, reject) => {
-      this.http.post<any>(urlLogin, {
-        email: 'loquesea@asdf.com',
-        passwd: '1234asdf',
-      }).subscribe(obj => {
-        if (!obj.token) resolve(false);
-        this.token = obj.token;
-        resolve(true);
-      });
+      this.http
+        .post<any>(urlLogin, {
+          email,
+          passwd,
+        })
+        .subscribe((obj) => {
+          if (!obj) resolve(false);
+          this.usuario = obj;
+          resolve(true);
+        });
     });
   }
+
+  public signup(email: string, passwd: string): Promise<boolean> {
+    const urlSignup = `${this.URL}/auth/registro`;
+    return new Promise((resolve, reject) => {
+      this.http
+        .post<any>(urlSignup, {
+          email,
+          passwd,
+        })
+        .subscribe((obj) => {
+          if (!obj) resolve(false);
+          this.usuario = obj;
+          resolve(true);
+        });
+    });
+  } 
 }

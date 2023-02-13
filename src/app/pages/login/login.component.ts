@@ -15,11 +15,21 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {}
 
   async login(login: any) {
-    await this._loginService.login()
+    await this._loginService.login(login.email, login.passwd)
       .then((res: boolean) => {
         console.log(res);
       });
     console.log(login);
+    //this.showLogin = false;
+    //this.showRegistro = true;
+  }
+
+  async signup(signup: any) {
+    await this._loginService.signup(signup.email, signup.passwd)
+      .then((res: boolean) => {
+        console.log(res);
+      });
+    console.log(signup);
     //this.showLogin = false;
     //this.showRegistro = true;
   }

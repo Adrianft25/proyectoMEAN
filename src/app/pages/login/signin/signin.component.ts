@@ -2,7 +2,7 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 interface Signin {
 
-  usuario: string;
+  email: string;
   passwd: string;
 
 }
@@ -18,7 +18,7 @@ export class SigninComponent implements OnInit {
 
   login: Signin = {
 
-    usuario: '',
+    email: '',
     passwd: ''
 
   }

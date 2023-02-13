@@ -1,7 +1,7 @@
-<ng-container *ngIf="showLogin">
+<ng-container>
   <app-signin (onLogin)="login($event)"></app-signin>
 </ng-container>
 
-<ng-container *ngIf="showRegistro">
-  <app-signup></app-signup>
+<ng-container>
+  <app-signup (onSignup)="signup($event)"></app-signup>
 </ng-container>
