@@ -14,13 +14,15 @@ import { SigninComponent } from './pages/login/signin/signin.component';
 import { ImagenCartaComponent } from './widgets/carta/imagen-carta/imagen-carta.component';
 import { CartaPageComponent } from './pages/cartas/carta-page/carta-page.component';
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
+import { AuthGuard } from './guards/auth.guard';
+import { LogoutGuard } from './guards/logout.guard';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cartas', component: CartasComponent },
   { path: 'carta/:id', component: CartaPageComponent},
-  { path: 'login', component: LoginComponent },
-  { path: 'usuario', component: UsuariosComponent },
+  { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
+  { path: 'usuario', component: UsuariosComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: HomeComponent }
 ];
