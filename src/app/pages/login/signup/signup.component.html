@@ -2,9 +2,9 @@
     <h1>Registro</h1>
     <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <div class="form-group">
-            <label for="email">Usuario</label>
-            <input type="email" class="form-control" id="email" required [(ngModel)]="registro.usuario" name="email"
-                #email="ngModel">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" required [(ngModel)]="registro.email" name="email"
+                #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                 Campo requerido
             </div>

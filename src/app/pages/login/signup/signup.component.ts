@@ -1,7 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 
 interface Signup {
-  usuario: string;
+  email: string;
   passwd: string;
   passwd2: string;
 }
@@ -15,7 +15,7 @@ export class SignupComponent implements OnInit {
   @Output() onSignup = new EventEmitter();
 
   registro: Signup = {
-    usuario: '',
+    email: '',
     passwd: '',
     passwd2: '',
   };
