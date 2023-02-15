@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SesionService } from 'src/app/services/sesion.service';
 
 @Component({
   selector: 'app-usuarios',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./usuarios.component.scss']
 })
 export class UsuariosComponent {
+
+  constructor(public usuarioService:SesionService){}
+
+ 
 
 }

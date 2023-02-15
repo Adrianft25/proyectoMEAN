@@ -16,6 +16,7 @@ import { CartaPageComponent } from './pages/cartas/carta-page/carta-page.compone
 import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutGuard } from './guards/logout.guard';
+import { BtnLogoutComponent } from './widgets/btn-logout/btn-logout.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -38,7 +39,8 @@ const routes: Routes = [
     SigninComponent,
     ImagenCartaComponent,
     CartaPageComponent,
-    UsuariosComponent
+    UsuariosComponent,
+    BtnLogoutComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { LocalStorageService } from './local-storage.service';
 
@@ -11,7 +12,7 @@ export class SesionService {
 
   usuario: any | undefined = undefined;
 
-  constructor(private http: HttpClient, private storage: LocalStorageService) {
+  constructor(private http: HttpClient, private storage: LocalStorageService, private router: Router) {
     const userTmp = storage.get('usuario');
     if (userTmp) this.usuario = userTmp;
   }
@@ -55,5 +56,16 @@ export class SesionService {
   public saveUsuario(usuario: any): void {
     this.usuario = usuario;
     this.storage.save('usuario', JSON.stringify(usuario));
+    this.redireccionarPagina('/usuario');
+  }
+
+  public cerrarSesion(): void {
+    this.storage.remove('usuario');
+    this.usuario = undefined;
+    this.redireccionarPagina('/login');
+  }
+
+  public redireccionarPagina(direccion:string): void {
+    this.router.navigate([direccion]);
   }
 }
