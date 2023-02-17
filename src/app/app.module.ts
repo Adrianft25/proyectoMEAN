@@ -17,10 +17,14 @@ import { UsuariosComponent } from './pages/usuarios/usuarios.component';
 import { AuthGuard } from './guards/auth.guard';
 import { LogoutGuard } from './guards/logout.guard';
 import { BtnLogoutComponent } from './widgets/btn-logout/btn-logout.component';
+import { BtnPaypalComponent } from './widgets/btn-paypal/btn-paypal.component';
+import { BtnCarritoComponent } from './widgets/btn-carrito/btn-carrito.component';
+import { CarritoComponent } from './pages/carrito/carrito.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cartas', component: CartasComponent },
+  { path: 'carrito', component: CarritoComponent },
   { path: 'carta/:id', component: CartaPageComponent},
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   { path: 'usuario', component: UsuariosComponent, canActivate: [AuthGuard] },
@@ -40,7 +44,10 @@ const routes: Routes = [
     ImagenCartaComponent,
     CartaPageComponent,
     UsuariosComponent,
-    BtnLogoutComponent
+    BtnLogoutComponent,
+    BtnPaypalComponent,
+    BtnCarritoComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,
