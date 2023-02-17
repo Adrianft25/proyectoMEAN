@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { Card } from 'src/app/models/carta.model';
+import { CarritoService } from 'src/app/services/carrito.service';
 import { CartasService } from 'src/app/services/cartas.service';
 
 @Component({
@@ -11,7 +12,7 @@ import { CartasService } from 'src/app/services/cartas.service';
 export class CartaPageComponent implements OnInit {
   carta: Card | undefined;
 
-  constructor(private route: ActivatedRoute, private cartasService: CartasService) {}
+  constructor(private route: ActivatedRoute, private cartasService: CartasService, private carritoService: CarritoService, private router: Router) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe((params: ParamMap) => {
@@ -21,5 +22,11 @@ export class CartaPageComponent implements OnInit {
         console.log(c);
       });
     });
+  }
+
+  public addCarrito(cant: number = 1) {
+    if (!this.carta) return;
+    this.carritoService.agregarItem(this.carta, cant);
+    this.router.navigate(['/carrito']);
   }
 }
