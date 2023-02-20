@@ -29,7 +29,6 @@ export class ImagenCartaComponent {
     this.renderer.listen(contenedor, 'mousemove', (event: any) => {
       carta.style.transition = 'none';
       const { offsetX, offsetY } = event;
-      console.log({ offsetX, offsetY })
       let rotationX = ((offsetX - halfWidth) / width) * 30;
       let rotationY = ((offsetY - halfHeight) / height) * 30;
       if (offsetY > halfHeight) rotationY = -1 * rotationY;

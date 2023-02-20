@@ -19,7 +19,6 @@ export class LoginComponent implements OnInit {
       .then((res: boolean) => {
         console.log(res);
       });
-    console.log(login);
     //this.showLogin = false;
     //this.showRegistro = true;
   }
@@ -29,7 +28,6 @@ export class LoginComponent implements OnInit {
       .then((res: boolean) => {
         console.log(res);
       });
-    console.log(signup);
     //this.showLogin = false;
     //this.showRegistro = true;
   }

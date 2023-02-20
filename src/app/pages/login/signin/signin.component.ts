@@ -32,7 +32,6 @@ export class SigninComponent implements OnInit {
 
   onSubmit() { 
     this.onLogin.emit(this.login); 
-    console.log(this.login);
   }
 
 }

@@ -28,6 +28,5 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     this.onSignup.emit(this.registro);
-    console.log(this.registro);
   }
 }
