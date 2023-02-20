@@ -20,4 +20,11 @@ export class CartasService {
     const urlCartas = `${this.URL}/cartas/carta/${id}`;
     return this.http.get<Card>(urlCartas);
   }
+
+  public getCartasCarrito(itemsCarrito: any[]): Observable<Card[]> {
+    const urlCartas = `${this.URL}/cartas/carrito`;
+    return this.http.post<Card[]>(urlCartas, {
+      itemsCarrito,
+    });
+  }
 }

@@ -1,1 +1,20 @@
-<p>carrito works!</p>
+<table>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Precio</th>
+      <th>Cantidad</th>
+      <th>Subtotal</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let carta of cartasCarrito">
+      <td><a [routerLink]="['/carta', carta.id]">{{ carta.name }}</a></td>
+      <td>{{ carta.card_prices[0].tcgplayer_price }} $</td>
+      <td>{{ carta.cantidad }}</td>
+      <td>
+        {{ (parseFloat(carta.card_prices[0].tcgplayer_price) * (carta.cantidad || 1)).toFixed(2) }} $
+      </td>
+    </tr>
+  </tbody>
+</table>

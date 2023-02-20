@@ -14,8 +14,12 @@ export class CarritoService {
 
   agregarItem(item: Card, cant: number = 1) {
     let items = this.obtenerItems();
-    items.push({ id: item.id, cantidad: cant });
-    this.storage.save('items', JSON.stringify(items));
+    if (items.some((i: any) => i.id === item.id)) {
+      this.actualizarCantidad(item);
+    } else {
+      items.push({ id: item.id, cantidad: cant });
+      this.storage.save('items', JSON.stringify(items));
+    }
   }
 
   borrarItem(item: Card) {
@@ -24,11 +28,11 @@ export class CarritoService {
     this.storage.save('items', JSON.stringify(items));
   }
 
-  actualizarCantidad(item: Card, cant: number) {
+  actualizarCantidad(item: Card, cant?: number) {
     let items = this.obtenerItems();
     const index = items.findIndex((i: any) => i.id === item.id);
     if (index >= 0) {
-      items[index].cantidad = cant;
+      items[index].cantidad = cant || items[index].cantidad + 1;
       this.storage.save('items', JSON.stringify(items));
     }
   }
