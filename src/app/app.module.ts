@@ -20,12 +20,27 @@ import { BtnLogoutComponent } from './widgets/btn-logout/btn-logout.component';
 import { BtnPaypalComponent } from './widgets/btn-paypal/btn-paypal.component';
 import { BtnCarritoComponent } from './widgets/btn-carrito/btn-carrito.component';
 import { CarritoComponent } from './pages/carrito/carrito.component';
+import { PasarelaComponent } from './pages/pasarela/pasarela.component';
+import { FacturacionComponent } from './pages/pasarela/facturacion/facturacion.component';
+import { CompraComponent } from './pages/pasarela/compra/compra.component';
+import { PagoComponent } from './pages/pasarela/pago/pago.component';
+import { CompraModule } from './pages/pasarela/compra/compra.module';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'cartas', component: CartasComponent },
   { path: 'carrito', component: CarritoComponent },
-  { path: 'carta/:id', component: CartaPageComponent},
+  {
+    path: 'pasarela',
+    component: PasarelaComponent,
+    children: [
+      { path: 'facturacion', component: FacturacionComponent },
+      { path: 'pago', component: PagoComponent },
+      { path: 'compra', component: CompraComponent },
+    ],
+  },
+
+  { path: 'carta/:id', component: CartaPageComponent },
   { path: 'login', component: LoginComponent, canActivate: [LogoutGuard] },
   { path: 'usuario', component: UsuariosComponent, canActivate: [AuthGuard] },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -47,15 +62,16 @@ const routes: Routes = [
     BtnLogoutComponent,
     BtnPaypalComponent,
     BtnCarritoComponent,
-    CarritoComponent
+    CarritoComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    CompraModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
