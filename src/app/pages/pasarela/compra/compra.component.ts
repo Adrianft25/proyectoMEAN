@@ -19,7 +19,8 @@ export class CompraComponent implements OnInit {
   private initConfig(): void {
     this.payPalConfig = {
       currency: 'EUR',
-      clientId: 'sb',
+      clientId:
+        'AQ4AAoK5POVZOid0pKX0aiXeQKXEiS2HHdS4RJz-Hissd6ycSPFq66mKbYn_IuCHC9bq1S71rC5SXP4K',
       createOrderOnClient: (data) =>
         <ICreateOrderRequest>{
           intent: 'CAPTURE',
@@ -91,6 +92,8 @@ export class CompraComponent implements OnInit {
     };
   }
   resetStatus() {
-    throw new Error('Method not implemented.');
+    this.showSuccess = false;
+    this.showCancel = false;
+    this.showError = false;
   }
 }
