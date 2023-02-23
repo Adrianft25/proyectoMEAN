@@ -24,7 +24,7 @@ import { PasarelaComponent } from './pages/pasarela/pasarela.component';
 import { FacturacionComponent } from './pages/pasarela/facturacion/facturacion.component';
 import { CompraComponent } from './pages/pasarela/compra/compra.component';
 import { PagoComponent } from './pages/pasarela/pago/pago.component';
-import { CompraModule } from './pages/pasarela/compra/compra.module';
+import { NgxPayPalModule } from 'ngx-paypal';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -63,16 +63,19 @@ const routes: Routes = [
     BtnPaypalComponent,
     BtnCarritoComponent,
     CarritoComponent,
-    PasarelaComponent
+    PasarelaComponent,
+    FacturacionComponent,
+    PagoComponent,
+    CompraComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(routes),
-    CompraModule
+    NgxPayPalModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
