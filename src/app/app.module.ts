@@ -63,6 +63,7 @@ const routes: Routes = [
     BtnPaypalComponent,
     BtnCarritoComponent,
     CarritoComponent,
+    PasarelaComponent
   ],
   imports: [
     BrowserModule,
