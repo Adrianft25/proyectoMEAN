@@ -29,7 +29,7 @@ export class CarritoComponent implements OnInit {
   }
 
   public finalizarCompra(): void {
-    this.router.navigate(['/pasarela/facturacion']);
+    this.router.navigate(['/pasarela/compra']);
   }
 }
 
