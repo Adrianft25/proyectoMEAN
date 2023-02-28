@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IPayPalConfig, ICreateOrderRequest } from 'ngx-paypal';
+import {
+  IPayPalConfig,
+  ICreateOrderRequest,
+  IPurchaseUnit,
+  IUnitAmount,
+  ITransactionItem,
+} from 'ngx-paypal';
+import { Card } from 'src/app/models/carta.model';
+import { CarritoService } from 'src/app/services/carrito.service';
+import { CartasService } from 'src/app/services/cartas.service';
 
 @Component({
   selector: 'app-compra',
@@ -12,43 +21,72 @@ export class CompraComponent implements OnInit {
   showCancel: boolean = false;
   showError: boolean = false;
 
+  itemsCarrito: Card[] = [];
+
+  datosCompra: IPurchaseUnit | undefined;
+
+  constructor(
+    private carritoService: CarritoService,
+    private cartasService: CartasService
+  ) {}
+
   ngOnInit(): void {
-    this.initConfig();
+    const items = this.carritoService.obtenerItems();
+    this.cartasService.getCartasCarrito(items).subscribe((data: Card[]) => {
+      this.itemsCarrito = data;
+      this.rellenarDatosCompra();
+      this.addDatosFactura();
+    });
   }
 
-  private initConfig(): void {
+  rellenarDatosCompra() {
+    let precioTotal = 0;
+
+    for (let i = 0; i < this.itemsCarrito.length; i++) {
+      let price = parseFloat(
+        this.itemsCarrito[i]?.card_prices[0]?.cardmarket_price ?? 1
+      );
+      precioTotal += (this.itemsCarrito[i].cantidad ?? 1) * price;
+      console.log(price);
+      console.log(precioTotal);
+    }
+
+    const amount: IUnitAmount = {
+      currency_code: 'USD',
+      value: `${precioTotal}`, //TODO total del carrito
+      breakdown: {
+        item_total: {
+          currency_code: 'USD',
+          value: `${precioTotal}`, //TODO total del carrito
+        },
+      },
+    };
+
+    let itemsPaypal: ITransactionItem[] = [];
+    this.itemsCarrito.forEach((item) => {
+      itemsPaypal.push({
+        name: item.name, //TODO nombre del item
+        quantity: `${item.cantidad}`, //TODO cantidad del item
+        category: 'PHYSICAL_GOODS',
+        unit_amount: {
+          currency_code: 'USD',
+          value: item.card_prices[0]?.cardmarket_price, //TODO precio de cada item
+        },
+      });
+    });
+
+    this.datosCompra = { amount, items: itemsPaypal };
+  }
+
+  private addDatosFactura(): void {
     this.payPalConfig = {
-      currency: 'EUR',
+      currency: 'USD',
       clientId:
         'AQ4AAoK5POVZOid0pKX0aiXeQKXEiS2HHdS4RJz-Hissd6ycSPFq66mKbYn_IuCHC9bq1S71rC5SXP4K',
       createOrderOnClient: (data) =>
         <ICreateOrderRequest>{
           intent: 'CAPTURE',
-          purchase_units: [
-            {
-              amount: {
-                currency_code: 'EUR',
-                value: '9.99',
-                breakdown: {
-                  item_total: {
-                    currency_code: 'EUR',
-                    value: '9.99',
-                  },
-                },
-              },
-              items: [
-                {
-                  name: 'Enterprise Subscription',
-                  quantity: '1',
-                  category: 'DIGITAL_GOODS',
-                  unit_amount: {
-                    currency_code: 'EUR',
-                    value: '9.99',
-                  },
-                },
-              ],
-            },
-          ],
+          purchase_units: [this.datosCompra],
         },
       advanced: {
         commit: 'true',
