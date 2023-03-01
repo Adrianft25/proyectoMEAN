@@ -106,6 +106,7 @@ export class CompraComponent implements OnInit {
             'onApprove - you can get full order details inside onApprove: ',
             details
           );
+          this.carritoService.procesarPedido(details);
         });
       },
       onClientAuthorization: (data) => {

@@ -68,4 +68,8 @@ export class SesionService {
   public redireccionarPagina(direccion:string): void {
     this.router.navigate([direccion]);
   }
+
+  public getIdUsuario(): any {
+    return this.usuario.id;
+  }
 }

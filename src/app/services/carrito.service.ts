@@ -1,12 +1,20 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Card } from '../models/carta.model';
 import { LocalStorageService } from './local-storage.service';
+import { SesionService } from './sesion.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CarritoService {
-  constructor(private storage: LocalStorageService) {}
+  URL: string = `http://localhost:3000`;
+
+  constructor(
+    private storage: LocalStorageService,
+    private http: HttpClient,
+    private usuarioService: SesionService
+  ) {}
 
   obtenerItems() {
     return JSON.parse(this.storage.get('items') || '[]') || [];
@@ -39,5 +47,14 @@ export class CarritoService {
 
   vaciarCarrito() {
     this.storage.remove('items');
+  }
+
+  procesarPedido(details: any) {
+    const urlPedido = `${this.URL}/compra`;
+    this.vaciarCarrito();
+    return this.http.post(urlPedido, {
+      details,
+      userId: this.usuarioService.getIdUsuario(),
+    });
   }
 }
