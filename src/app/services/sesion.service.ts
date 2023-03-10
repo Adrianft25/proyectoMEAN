@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { Usuario } from '../models/usuario.model';
 import { LocalStorageService } from './local-storage.service';
 
 @Injectable({
@@ -10,11 +11,15 @@ import { LocalStorageService } from './local-storage.service';
 export class SesionService {
   URL: string = `http://localhost:3000`;
 
-  usuario: any | undefined = undefined;
+  usuario: Usuario | undefined = undefined;
 
-  constructor(private http: HttpClient, private storage: LocalStorageService, private router: Router) {
-    const userTmp = storage.get('usuario');
-    if (userTmp) this.usuario = userTmp;
+  constructor(
+    private http: HttpClient,
+    private storage: LocalStorageService,
+    private router: Router
+  ) {
+    const userString = storage.get('usuario');
+    if (userString) this.usuario = JSON.parse(userString);
   }
 
   public login(email: string, passwd: string): Promise<boolean> {
@@ -50,10 +55,10 @@ export class SesionService {
   }
 
   public isLoggedIn(): boolean {
-    return !this.usuario ? false : true;
+    return !this.getUsuario() ? false : true;
   }
 
-  public saveUsuario(usuario: any): void {
+  public saveUsuario(usuario: Usuario): void {
     this.usuario = usuario;
     this.storage.save('usuario', JSON.stringify(usuario));
     this.redireccionarPagina('/usuario');
@@ -65,11 +70,26 @@ export class SesionService {
     this.redireccionarPagina('/login');
   }
 
-  public redireccionarPagina(direccion:string): void {
+  public redireccionarPagina(direccion: string): void {
     this.router.navigate([direccion]);
   }
 
-  public getIdUsuario(): any {
-    return this.usuario.id;
+  public getIdUsuario(): string {
+    return this.getUsuario()?.id || '';
   }
-}
+
+  public getUsuario(): Usuario | undefined {
+    if (this.usuario != undefined) return this.usuario;
+    const userString = this.storage.get('usuario');
+    if (userString) this.usuario = JSON.parse(userString);
+    return this.usuario;
+  }
+
+  public getFacturasUsuario(): Observable<Usuario> {
+    const urlFacturas = `${this.URL}/facturas`;
+    console.log(this.getIdUsuario());
+    return this.http.post<Usuario>(urlFacturas, {
+      userId: this.getIdUsuario()
+    });
+  }
+} 
