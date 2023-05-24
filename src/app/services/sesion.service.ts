@@ -85,10 +85,10 @@ export class SesionService {
     return this.usuario;
   }
 
-  public getFacturasUsuario(): Observable<Usuario> {
+  public getFacturasUsuario(): Observable<any> {
     const urlFacturas = `${this.URL}/facturas`;
     console.log(this.getIdUsuario());
-    return this.http.post<Usuario>(urlFacturas, {
+    return this.http.post<any>(urlFacturas, {
       userId: this.getIdUsuario()
     });
   }
