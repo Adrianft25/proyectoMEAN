@@ -23,6 +23,8 @@ export class SesionService {
   }
 
   public login(email: string, passwd: string): Promise<boolean> {
+    this.storage.remove('usuario');
+    this.usuario = undefined;
     const urlLogin = `${this.URL}/auth/login`;
     return new Promise((resolve, reject) => {
       this.http
@@ -39,6 +41,8 @@ export class SesionService {
   }
 
   public signup(email: string, passwd: string): Promise<boolean> {
+    this.storage.remove('usuario');
+    this.usuario = undefined;
     const urlSignup = `${this.URL}/auth/registro`;
     return new Promise((resolve, reject) => {
       this.http
@@ -79,7 +83,7 @@ export class SesionService {
   }
 
   public getUsuario(): Usuario | undefined {
-    if (this.usuario != undefined) return this.usuario;
+    if (this.usuario != undefined && this.usuario.id) return this.usuario;
     const userString = this.storage.get('usuario');
     if (userString) this.usuario = JSON.parse(userString);
     return this.usuario;
@@ -89,7 +93,23 @@ export class SesionService {
     const urlFacturas = `${this.URL}/facturas`;
     console.log(this.getIdUsuario());
     return this.http.post<any>(urlFacturas, {
-      userId: this.getIdUsuario()
+      userId: this.getIdUsuario(),
     });
   }
-} 
+
+  public refrescarUsuario() {
+    const idUserActual = this.getIdUsuario();
+    this.http.get<any>(`${this.URL}/refresh/${idUserActual}`).subscribe({
+      next: (usuario) => {
+        console.log(usuario);
+        this.storage.remove('usuario');
+        this.usuario = usuario;
+        this.storage.save('usuario', JSON.stringify(usuario));
+      },
+      error: (err) => {
+        console.log(err);
+      },
+      complete: () => console.log('complete'),
+    });
+  }
+}

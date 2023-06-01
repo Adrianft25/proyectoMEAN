@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   IPayPalConfig,
   ICreateOrderRequest,
@@ -27,7 +28,8 @@ export class CompraComponent implements OnInit {
 
   constructor(
     private carritoService: CarritoService,
-    private cartasService: CartasService
+    private cartasService: CartasService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -106,14 +108,24 @@ export class CompraComponent implements OnInit {
             'onApprove - you can get full order details inside onApprove: ',
             details
           );
-          this.carritoService.procesarPedido(details);
         });
       },
-      onClientAuthorization: (data) => {
+      onClientAuthorization: (details) => {
         console.log(
           'onClientAuthorization - you should probably inform your server about completed transaction at this point',
-          data
+          details
         );
+        console.log("😎")
+          this.carritoService.procesarPedido(details).subscribe({
+            next: (data) => {
+              console.log(data);
+              this.router.navigate(['/usuario']);
+            },
+            error: (err) => {
+              console.log(err);
+            },
+            complete: () => console.log('complete'),
+          });
         this.showSuccess = true;
       },
       onCancel: (data, actions) => {

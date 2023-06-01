@@ -8,8 +8,8 @@ import { SesionService } from 'src/app/services/sesion.service';
 })
 export class UsuariosComponent {
 
-  constructor(public usuarioService:SesionService){}
-
- 
+  constructor(public usuarioService:SesionService){
+    usuarioService.refrescarUsuario();
+  }
 
 }
