@@ -1,0 +1,18 @@
+<div class="titulo">
+  <span class="num-pedido">{{pedido?._fieldsProto?.numeroPedido?.stringValue}}</span>
+  <span class="total-precio text-naranja">{{pedido?._fieldsProto?.total?.stringValue | currency}}</span>
+</div>
+<div class="grid">
+  <div class="row">
+    <div class="nombre">Nombre de producto</div>
+    <div class="unidades">Unidades</div>
+    <div class="precio-unid">Precio</div>
+    <div class="total-prod">Subtotal</div>
+  </div>
+  <div class="row" *ngFor="let producto of pedido?._fieldsProto?.datosItems?.arrayValue?.values">
+    <div class="nombre">{{producto?.mapValue?.fields?.name?.stringValue}}</div>
+    <div class="unidades">{{producto?.mapValue?.fields?.quantity?.stringValue}}</div>
+    <div class="precio-unid">{{producto?.mapValue?.fields?.unit_amount?.mapValue?.fields?.value?.stringValue | currency}}</div>
+    <div class="total-prod">{{calculoSubtotal(producto?.mapValue?.fields?.quantity?.stringValue, producto?.mapValue?.fields?.unit_amount?.mapValue?.fields?.value?.stringValue) | currency}}</div>
+  </div>
+</div>
