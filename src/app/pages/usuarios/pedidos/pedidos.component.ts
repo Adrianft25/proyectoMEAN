@@ -18,8 +18,4 @@ export class PedidosComponent implements OnInit {
       this.facturas = res.facturas as Factura[];
     });
   }
-
-  calculoSubtotal(unidades:any, precioUnidad:any){
-    return (parseFloat(unidades) * parseFloat(precioUnidad)).toFixed(2)
-  }
 }

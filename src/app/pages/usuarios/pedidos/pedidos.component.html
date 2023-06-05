@@ -1,18 +1,4 @@
 <div class="pedidos">
-  <div class="factura" *ngFor="let factura of facturas">
-    <div class="productos">
-      <div class="row">
-        <div class="nombre">Nombre de producto</div>
-        <div class="unidades">Unidades</div>
-        <div class="precio-unid">Precio</div>
-        <div class="total-prod">Subtotal</div>
-      </div>
-      <div class="row" *ngFor="let producto of factura?._fieldsProto?.datosItems?.arrayValue?.values">
-        <div class="nombre">{{producto?.mapValue?.fields?.name?.stringValue}}</div>
-        <div class="unidades">{{producto?.mapValue?.fields?.quantity?.stringValue}}</div>
-        <div class="precio-unid">{{producto?.mapValue?.fields?.unit_amount?.mapValue?.fields?.value?.stringValue}}</div>
-        <div class="total-prod">{{calculoSubtotal(producto?.mapValue?.fields?.quantity?.stringValue, producto?.mapValue?.fields?.unit_amount?.mapValue?.fields?.value?.stringValue)}}</div>
-      </div>
-    </div>
-  </div>
+  <app-pedido *ngFor="let factura of facturas" [pedido]="factura">
+  </app-pedido>
 </div>

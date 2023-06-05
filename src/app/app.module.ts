@@ -25,6 +25,7 @@ import { CompraComponent } from './pages/pasarela/compra/compra.component';
 import { PagoComponent } from './pages/pasarela/pago/pago.component';
 import { NgxPayPalModule } from 'ngx-paypal';
 import { PedidosComponent } from './pages/usuarios/pedidos/pedidos.component';
+import { PedidoComponent } from './pages/usuarios/pedidos/pedido/pedido.component';
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
@@ -66,6 +67,7 @@ const routes: Routes = [
     PagoComponent,
     CompraComponent,
     PedidosComponent,
+    PedidoComponent,
   ],
   imports: [
     BrowserModule,

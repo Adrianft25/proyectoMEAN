@@ -1,0 +1,11 @@
+:host{
+    .pedidos {
+        width: fit-content;
+        margin-inline: auto;
+
+        app-pedido {
+            // max-width: fit-content;
+            width: 100%;
+        }
+    }
+}
