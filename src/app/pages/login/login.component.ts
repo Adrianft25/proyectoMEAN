@@ -10,6 +10,22 @@ export class LoginComponent implements OnInit {
   showLogin = true;
   showRegistro = false;
 
+  // get showLogin(){
+  //   return this._showLogin;
+  // }
+  // set showLogin(value: boolean) {
+  //   this._showLogin = value;
+  //   this._showRegistro = !value;
+  // }
+
+  // get showRegistro(){
+  //   return this._showRegistro;
+  // }
+  // set showRegistro(value: boolean) {
+  //   this._showRegistro = value;
+  //   this._showLogin = !value;
+  // }
+
   constructor(private _loginService: SesionService) {}
 
   ngOnInit(): void {}
@@ -30,5 +46,15 @@ export class LoginComponent implements OnInit {
       });
     //this.showLogin = false;
     //this.showRegistro = true;
+  }
+
+  changeStatusShowLogin(value: boolean) {
+    this.showLogin = value;
+    this.showRegistro = !value;
+  }
+
+  changeStatusShowRegistro(value: boolean) {
+    this.showRegistro = value;
+    this.showLogin = !value;
   }
 }

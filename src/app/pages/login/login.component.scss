@@ -1,1 +1,11 @@
-@import 'global.scss';
+//@import 'global.scss';
+
+:host{
+    display: flex;
+    justify-content: center;
+
+    app-signin, 
+    app-signup{
+        min-width: 25vw;
+    }
+}
