@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 interface Signin {
 
@@ -15,6 +15,7 @@ interface Signin {
 export class SigninComponent implements OnInit {
 
   @Output() onLogin = new EventEmitter();
+  @Output() onChangeShowLogin = new EventEmitter<boolean>();
 
   login: Signin = {
 
