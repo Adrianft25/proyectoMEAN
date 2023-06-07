@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 interface Signup {
   email: string;
@@ -13,6 +13,7 @@ interface Signup {
 })
 export class SignupComponent implements OnInit {
   @Output() onSignup = new EventEmitter();
+  @Output() onChangeShowRegistro = new EventEmitter<boolean>();
 
   registro: Signup = {
     email: '',
