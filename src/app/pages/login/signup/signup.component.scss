@@ -27,7 +27,7 @@
         }
   
         input {
-          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+          font-family: 'Open Sans', sans-serif;
           border: 1px solid #cacaca;
           border-radius: 4px;
           box-sizing: border-box;
@@ -44,7 +44,7 @@
           }*/
   
           &::placeholder {
-            font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Open Sans', sans-serif;
           }
         }
       }
@@ -52,7 +52,7 @@
   }
   
   .btn {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Open Sans', sans-serif;
     &-success {
       background-color: #ffa372;
       border: 1px solid #ff6c3e;
