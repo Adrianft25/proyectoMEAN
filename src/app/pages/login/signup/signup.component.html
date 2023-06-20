@@ -3,7 +3,7 @@
     <form (ngSubmit)="onSubmit()" #signupForm="ngForm">
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" class="form-control shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" required [(ngModel)]="registro.email" name="email"
+            <input type="email" class="form-control" [ngClass]="{'error': (!email.valid && !email.pristine)}" id="email" required [(ngModel)]="registro.email" name="email"
                 #email="ngModel" placeholder="Introduce tu correo electrónico" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$">
             <!--<div [hidden]="email.valid || email.pristine" class="alert alert-danger">
                 Campo requerido
@@ -12,7 +12,7 @@
 
         <div class="form-group">
             <label for="passwd">Contraseña</label>
-            <input type="password" class="form-control" id="passwd" required [(ngModel)]="registro.passwd" name="passwd"
+            <input type="password" class="form-control" [ngClass]="{'error': (!passwd.valid && !passwd.pristine)}" id="passwd" required [(ngModel)]="registro.passwd" name="passwd"
                 #passwd="ngModel" placeholder="Introduce tu contraseña">
             <!--<div [hidden]="passwd.valid || passwd.pristine" class="alert alert-danger">
                 Campo requerido
@@ -21,14 +21,14 @@
 
         <div class="form-group">
             <label for="passwd2">Repite tu contraseña</label>
-            <input type="password" class="form-control" id="passwd2" required [(ngModel)]="registro.passwd2" name="passwd2"
-                #passwd2="ngModel">
+            <input type="password" class="form-control" [ngClass]="{'error': (!passwd2.pristine && (!passwd2.valid || (passwd.value !== passwd2.value)))}" id="passwd2" required [(ngModel)]="registro.passwd2" name="passwd2"
+                #passwd2="ngModel" placeholder="Repite tu contraseña">
             <!--<div [hidden]="passwd2.valid || passwd2.pristine" class="alert alert-danger">
                 Campo requerido
             </div>-->
         </div>
 
-        <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid">Entrar</button>
+        <button type="submit" class="btn btn-success" [disabled]="!signupForm.form.valid || (passwd.value !== passwd2.value)">Entrar</button>
     </form>
     <button type="button" class="btn btn-info" (click)="onChangeShowRegistro.emit(false)">Logueate aquí</button>
 </div>
