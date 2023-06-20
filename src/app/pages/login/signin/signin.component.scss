@@ -31,7 +31,7 @@
         border: 1px solid #cacaca;
         border-radius: 4px;
         box-sizing: border-box;
-        padding: 0.25rem;
+        padding: 0.5rem;
         margin-bottom: 1rem;
 
         &.error {
@@ -54,19 +54,20 @@
 .btn {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   &-success {
-    background-color: #f57600;
-    border: 1px solid #f79d4a;
+    background-color: #ffa372;
+    border: 1px solid #ff6c3e;
     border-radius: 4px;
     color: white;
     margin-bottom: 1rem;
-    padding-block: 0.25rem;
+    padding-block: 0.5rem;
     font-size: medium;
     text-transform: uppercase;
     transition: all 0.3s;
+    cursor: pointer;
 
     &:disabled {
-      background-color: #f79d4a;
-      border: 1px solid #f57600;
+      background-color: #bebebe;
+      border: 1px solid #3b3b3b;
     }
   }
 
