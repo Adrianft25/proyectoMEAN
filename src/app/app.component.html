@@ -2,7 +2,7 @@
   <nav id="main-nav">
     <a class="nav-link" routerLink="home">Home</a>
     <a class="nav-link" routerLink="cartas">Cartas</a>
-    <btn-carrito></btn-carrito>
+    <btn-carrito class="nav-link"></btn-carrito>
     <a class="nav-link" routerLink="login" *ngIf="!sesionService.isLoggedIn()">Login</a>
     <a class="nav-link" routerLink="usuario"*ngIf="sesionService.isLoggedIn()">Usuario</a>
     <btn-logout *ngIf="sesionService.isLoggedIn()"></btn-logout>
