@@ -27,7 +27,7 @@
       }
 
       input {
-        font-family: 'Open Sans', sans-serif;
+        font-family: "Open Sans", sans-serif;
         border: 1px solid #cacaca;
         border-radius: 4px;
         box-sizing: border-box;
@@ -44,7 +44,7 @@
         }*/
 
         &::placeholder {
-          font-family: 'Open Sans', sans-serif;
+          font-family: "Open Sans", sans-serif;
         }
       }
     }
@@ -52,7 +52,7 @@
 }
 
 .btn {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   &-success {
     background-color: #ff8d4f;
     border: 1px solid #ff6c3e;
@@ -67,7 +67,9 @@
 
     &:disabled {
       background-color: #bebebe;
-      border: 1px solid #3b3b3b;
+      border: 1px solid #5d5d5d;
+      color: #5d5d5d;
+      cursor: not-allowed;
     }
   }
 
