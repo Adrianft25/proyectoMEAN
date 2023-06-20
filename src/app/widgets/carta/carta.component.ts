@@ -17,7 +17,7 @@ export class CartaComponent implements OnInit {
 
   ngOnInit() {
     this.url_image = this.card?.card_images[0]?.image_url_small ?? '';
-    this.precio = this.card?.card_prices[0]?.cardmarket_price;
+    this.precio = this.card?.card_prices[0]?.tcgplayer_price;
   }
 
 }

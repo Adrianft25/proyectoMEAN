@@ -2,6 +2,6 @@
   <app-imagen-carta [imagen]="url_image" [efectoHover]="false"></app-imagen-carta>
   <div class="textos-carta">
     <a [routerLink]="['/carta', card?.id]">{{ card?.name }}</a>
-    <span>{{ precio }} €</span>
+    <span>${{ precio }}</span>
   </div>
 </div>
