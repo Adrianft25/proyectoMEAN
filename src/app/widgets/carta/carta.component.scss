@@ -1,19 +1,34 @@
 :host {
-
-  &>.area-carta {
+  & > .area-carta {
     height: 100%;
-    border: 5px solid #181818;
-    border-radius: 12px;
+    border: 0.5px solid #cacaca;
+    border-radius: 6px;
     height: 100%;
-    background-color: #888888;
+    box-shadow: 0px 0px 5px 0px #9d9d9d;
+    //background-color: #888888;
     padding: 1rem;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 1rem;
 
-    &>.textos-carta p {
+    & > .textos-carta {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: space-between;
+      font-size: 1.5rem;
 
+      & > a {
+        cursor: pointer;
+        text-decoration: none;
+        color: rgb(37, 37, 37);
+      }
+
+      & > span {
+        font-weight: 600;
+        color: orangered;
+      }
     }
   }
 }

@@ -1,7 +1,7 @@
 <div class="area-carta">
   <app-imagen-carta [imagen]="url_image" [efectoHover]="false"></app-imagen-carta>
   <div class="textos-carta">
-    <h1><a [routerLink]="['/carta', card?.id]">{{ card?.name }}</a></h1>
+    <a [routerLink]="['/carta', card?.id]">{{ card?.name }}</a>
     <span>{{ precio }} €</span>
   </div>
 </div>
