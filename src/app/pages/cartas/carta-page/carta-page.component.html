@@ -22,12 +22,11 @@
             <span>{{ carta.atk + " / " + carta.def }}</span>
           </div>
         </div>
-        <div>
-          <span>Precio</span>
-          <br />
-          <span>{{ carta.card_prices[0].tcgplayer_price }} $</span>
+        <div class="propiedades">
+          <h3>Precio</h3>
+          <span class="precio">{{ carta.card_prices[0].tcgplayer_price }}$</span>
           <br>
-          <button class="bg-naranja font-semibold py-2 px-4 rounded" (click)="addCarrito()">Añadir al Carrito</button>
+          <button class="add-carrito" (click)="addCarrito()">Añadir al Carrito</button>
         </div>
       </div>
     </div>

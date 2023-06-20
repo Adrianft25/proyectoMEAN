@@ -1,26 +1,40 @@
-@import 'global.scss';
-
+@import "global.scss";
 
 :host {
-
-  h1{
+  h1 {
     font-size: 2rem;
     font-weight: bold;
+    margin-bottom: 1rem;
   }
 
-  .propiedades{
-
+  .propiedades {
     padding-block: 0.5rem;
     /*
     &:not(:last-child){
       border-bottom: 1px solid grey;
     }*/
-  }
-  
-  h3 {
-    font-weight: bold;
-    font-size: 1.3rem;
-    text-decoration: underline;
-  }
 
+    & > h3 {
+      font-weight: bold;
+      font-size: 1.3rem;
+      text-decoration: underline;
+      margin-bottom: 0.25rem;
+    }
+
+    & > .precio {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: orangered;
+    }
+
+    & > button {
+      margin-top: 1.5rem;
+      padding: 0.5rem 1rem;
+      background-color: #ff8d4f;
+      border: 1px solid #ff6c3e;
+      border-radius: 4px;
+      color: white;
+      font-weight: 400;
+    }
+  }
 }
