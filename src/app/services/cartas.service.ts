@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Card } from '../models/carta.model';
 
@@ -11,9 +11,14 @@ export class CartasService {
 
   constructor(private http: HttpClient) {}
 
-  public getAllCartas(): Observable<Card[]> {
+  public getAllCartas({ page = 1, limit = 30 } : { page: number, limit: number }): Observable<{data: Card[]}> {
+      // Crear los parámetros de consulta
+      let queryParams = new HttpParams()
+        .set('page', page)
+        .set('limit', limit);
+
     const urlCartas = `${this.URL}/cartas`;
-    return this.http.get<Card[]>(urlCartas);
+    return this.http.get<{data: Card[]}>(urlCartas, { params: queryParams });
   }
 
   public getCarta(id: number | string): Observable<Card> {

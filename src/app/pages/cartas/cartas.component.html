@@ -2,4 +2,13 @@
   <div class="listado-cartas container mx-auto">
     <app-carta *ngFor="let carta of cards" [card]="carta"></app-carta>
   </div>
+  <div class="paginacion">
+    <a (click)="cambiarPagina(-1)">Anterior</a>
+    <div>
+      <span>{{ page }}</span>
+      /
+      <span>{{ maxPages }}</span>
+    </div>
+    <a (click)="cambiarPagina(1)">Siguiente</a>
+  </div>
 </div>
