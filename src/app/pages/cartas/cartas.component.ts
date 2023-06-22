@@ -25,8 +25,9 @@ export class CartasComponent implements OnInit {
   }
 
   cambiarPagina(pagina: number) {
-    if(pagina == -1 && this.hasPrevPage) this.page--;
-    if(pagina == 1 && this.hasNextPage) this.page++;
+    if(pagina < 1 || pagina > this.maxPages) return;
+
+    this.page = pagina;
     this.getCartas();
   }
 

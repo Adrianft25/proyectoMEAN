@@ -3,12 +3,12 @@
     <app-carta *ngFor="let carta of cards" [card]="carta"></app-carta>
   </div>
   <div class="paginacion">
-    <a (click)="cambiarPagina(-1)">Anterior</a>
+    <a (click)="cambiarPagina(page - 1)">Anterior</a>
     <div>
-      <span>{{ page }}</span>
+      <input [(ngModel)]="page" type="number" min="1" max="{{ maxPages }}" (change)="cambiarPagina(page)"/>
       /
       <span>{{ maxPages }}</span>
     </div>
-    <a (click)="cambiarPagina(1)">Siguiente</a>
+    <a (click)="cambiarPagina(page + 1)">Siguiente</a>
   </div>
 </div>
